@@ -9,14 +9,17 @@ pipeline {
     stages {
         stage('Check Environment') {
             steps {
-                sh 'echo "JAVA_HOME=$JAVA_HOME"'
-                sh 'echo "PATH=$PATH"'
-                sh 'which java'
-                sh 'java -version'
-                sh 'which mvn'
-                sh 'mvn -version'
-                sh 'which sh'
-                sh 'sh -c "echo shell is working"'
+                sh '''
+                   echo "JAVA_HOME=$JAVA_HOME"
+                   echo "PATH=$PATH"
+                   type -a java
+                   ${JAVA_HOME}/bin/java -version
+                   export JAVA_HOME=${JAVA_HOME}
+                   export PATH=${JAVA_HOME}/bin:$PATH
+                   mvn -version
+                   which sh
+                   sh -c "echo shell is working"
+                '''
             }
         }
     }
