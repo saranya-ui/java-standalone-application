@@ -2,11 +2,6 @@ pipeline {
     agent any
 
     stages {
-        stage('Checkout') {
-            steps {
-                git 'https://github.com/expertszen/java-standalone-application.git'
-            }
-        }
 
         stage('Build') {
             steps {
