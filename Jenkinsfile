@@ -39,14 +39,20 @@ pipeline {
     agent any
 
     tools {
-        maven 'Maven 3.9.3' // this tells Jenkins to use the Maven you installed in Jenkins Global Tools
+        maven 'Maven 3.9.3'
+    }
+
+    environment {
+        // Append Maven and Homebrew bin to PATH correctly
+        PATH = "${tool 'Maven 3.9.3'}/bin:/opt/homebrew/bin:/usr/bin:/bin:/usr/sbin:/sbin"
     }
 
     stages {
         stage('Check Shell and Maven') {
             steps {
-                sh 'echo "Shell location:" $(which sh)'
-                sh 'echo "Maven version:" $(mvn -version)'
+                sh 'which sh'
+                sh 'sh -c "echo Shell found and working"'
+                sh 'mvn -version'
             }
         }
     }
