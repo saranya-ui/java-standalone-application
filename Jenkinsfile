@@ -7,6 +7,12 @@ pipeline {
     }
 
     stages {
+        stage('Check JDK Path') {
+  steps {
+    sh 'ls -l /Library/Java/JavaVirtualMachines/openjdk-17.jdk/Contents/Home/bin/java'
+  }
+}
+
         stage('Check Environment') {
             steps {
                 sh '''
