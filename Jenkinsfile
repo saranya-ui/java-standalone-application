@@ -2,7 +2,7 @@ pipeline {
     agent any
 
     tools {
-        jdk 'jdk17'
+        jdk 'jdk8'  // Use the exact name you set in Jenkins (step 1)
         maven 'Maven 3.9.3'
     }
 
