@@ -6,9 +6,9 @@ pipeline {
           jdk 'jdk17'
     }
 
-    environment {
-        // Append Maven and Homebrew bin to PATH correctly
-        PATH = "${tool 'Maven 3.9.3'}/bin:/opt/homebrew/bin:/usr/bin:/bin:/usr/sbin:/sbin"
+      environment {
+        JAVA_HOME = '/Library/Java/JavaVirtualMachines/openjdk-17.jdk/Contents/Home'
+        PATH = "${JAVA_HOME}/bin:${tool 'Maven 3.9.3'}/bin:${env.PATH}"
     }
 
     stages {
