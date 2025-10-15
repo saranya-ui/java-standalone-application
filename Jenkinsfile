@@ -6,10 +6,11 @@ pipeline {
           jdk 'jdk17'
     }
 
-      environment {
+     environment {
         JAVA_HOME = '/Library/Java/JavaVirtualMachines/openjdk-17.jdk/Contents/Home'
-        PATH = "${JAVA_HOME}/bin:${tool 'Maven 3.9.3'}/bin:${env.PATH}"
+        PATH+EXTRA = "${JAVA_HOME}/bin:${tool 'Maven 3.9.3'}/bin"
     }
+
 
     stages {
         stage('Build') {
